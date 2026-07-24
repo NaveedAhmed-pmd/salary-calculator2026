@@ -113,6 +113,8 @@
   @media (min-width:860px){
     .grid{ grid-template-columns: 340px 1fr; align-items:start; }
   }
+  .grid.solo{ grid-template-columns: 1fr !important; }
+  .grid.solo #formCard{ display:none; }
 
   .card{
     background:var(--card);
@@ -327,9 +329,9 @@
 <main>
   <p class="lede">Select your pay scale and enter your current basic pay (as per the 2022 pay scale). The calculator will locate the matching stage, pull the 2026 revised basic pay, and compute the 7% Adhoc Relief Allowance, 15% Disparity Reduction Allowance, and the revised Conveyance Allowance exactly as prescribed.</p>
 
-  <div class="grid">
+  <div class="grid" id="mainGrid">
     <!-- FORM CARD -->
-    <section class="card form-card">
+    <section class="card form-card" id="formCard">
       <h2>Enter Your Details</h2>
       <p class="hint">Only two inputs required — everything else is derived from official records.</p>
 
@@ -377,7 +379,10 @@
       <div class="card" id="resultArea">
         <div class="result-header">
           <h2>Your Salary Breakdown</h2>
-          <span class="tag" id="resultBpsTag">BPS-01</span>
+          <div style="display:flex; align-items:center; gap:10px;">
+            <span class="tag" id="resultBpsTag">BPS-01</span>
+            <button class="btn-ghost" id="editBtn" style="padding:8px 16px; font-size:12.5px;">Edit Details</button>
+          </div>
         </div>
 
         <div class="ledger" id="ledgerSteps"></div>
@@ -473,6 +478,8 @@ const basicPayInput = document.getElementById('basicPayInput');
 const errorMsg = document.getElementById('errorMsg');
 const placeholderCard = document.getElementById('placeholderCard');
 const resultArea = document.getElementById('resultArea');
+const mainGrid = document.getElementById('mainGrid');
+const formCard = document.getElementById('formCard');
 const ledgerSteps = document.getElementById('ledgerSteps');
 const conveyanceBlock = document.getElementById('conveyanceBlock');
 const totalIncreaseValue = document.getElementById('totalIncreaseValue');
@@ -483,6 +490,7 @@ function showError(msg){
   errorMsg.style.display = 'block';
   resultArea.style.display = 'none';
   placeholderCard.style.display = 'block';
+  mainGrid.classList.remove('solo');
 }
 function clearError(){
   errorMsg.style.display = 'none';
@@ -532,7 +540,7 @@ function calculate(){
   const basicPayIncrease = basicPay2026 - basicPay2022;
   const ara = basicPay2026 * 0.07;
   const draApplicable = document.querySelector('input[name="draApplicable"]:checked').value === 'yes';
-  const dra = draApplicable ? currentBasicPay * 0.15 : 0;
+  const dra = draApplicable ? basicPay2022 * 0.15 : 0;
 
   const rule = getConveyanceRule(bps);
   const conveyance2026 = rule.revised;
@@ -548,12 +556,12 @@ function calculate(){
     arrowDivider() +
     stepRow(2, "Stage", "Auto-detected", "Stage " + stageIndex) +
     arrowDivider() +
-    stepRow(3, "2022 Basic Pay", "Confirmed from record", fmt(basicPay2022)) +
+    stepRow(3, "2022 Basic Pay", "As on 30.06.2022 &middot; DRA basis", fmt(basicPay2022)) +
     arrowDivider() +
     stepRow(4, "2026 Revised Basic Pay", "From official 2026 scale", fmt(basicPay2026));
 
   const draRow = draApplicable
-    ? `<div class="row"><div class="k">15% Disparity Reduction Allowance <small>Current Basic Pay &times; 15%</small></div><div class="v">${fmt(dra)}</div></div>`
+    ? `<div class="row"><div class="k">15% Disparity Reduction Allowance <small>Fixed at Basic Pay as on 30.06.2022 &times; 15%</small></div><div class="v">${fmt(dra)}</div></div>`
     : `<div class="row"><div class="k">15% Disparity Reduction Allowance <small>Not admissible in this Ministry / Division</small></div><div class="v">Not Applicable</div></div>`;
 
   conveyanceBlock.innerHTML = `
@@ -571,6 +579,7 @@ function calculate(){
 
   placeholderCard.style.display = 'none';
   resultArea.style.display = 'block';
+  mainGrid.classList.add('solo');
 }
 
 document.getElementById('calcBtn').addEventListener('click', calculate);
@@ -586,6 +595,13 @@ document.getElementById('resetBtn').addEventListener('click', () => {
   clearError();
   resultArea.style.display = 'none';
   placeholderCard.style.display = 'block';
+  mainGrid.classList.remove('solo');
+});
+
+document.getElementById('editBtn').addEventListener('click', () => {
+  resultArea.style.display = 'none';
+  placeholderCard.style.display = 'block';
+  mainGrid.classList.remove('solo');
 });
 
 document.getElementById('copyBtn').addEventListener('click', () => {
