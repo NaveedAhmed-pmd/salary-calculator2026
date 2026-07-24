@@ -1,593 +1,626 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Government of Pakistan Salary Increase Calculator (2026)</title>
-    <style>
-        :root {
-            --primary-green: #1b4d3e;
-            --secondary-green: #2d6a4f;
-            --light-green: #e8f5e9;
-            --accent-gold: #d4af37;
-            --dark-text: #2c3e50;
-            --light-bg: #f4f7f6;
-            --white: #ffffff;
-            --shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-            --transition: all 0.3s ease;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Salary Increase Calculator 2026 | Government of Pakistan</title>
+<style>
+  :root{
+    --paper:#F6F4EC;
+    --paper-2:#EFECDF;
+    --ink:#1C2B22;
+    --ink-soft:#3E4C43;
+    --green-950:#0C2A20;
+    --green-900:#123B2C;
+    --green-800:#175038;
+    --green-700:#1F6B49;
+    --green-600:#2A8560;
+    --brass:#B98A2E;
+    --brass-light:#E4C77C;
+    --line:#D8D2BE;
+    --card:#FFFFFF;
+    --danger:#9C3B2E;
+    --radius-lg:18px;
+    --radius-md:12px;
+    --radius-sm:8px;
+    --serif: Georgia, 'Times New Roman', 'Noto Serif', serif;
+    --sans: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    --mono: 'Consolas', 'SF Mono', 'Courier New', monospace;
+  }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:var(--sans);
+    color:var(--ink);
+    background:
+      radial-gradient(1200px 600px at 10% -10%, rgba(31,107,73,0.10), transparent 60%),
+      radial-gradient(1000px 500px at 100% 0%, rgba(185,138,46,0.08), transparent 55%),
+      var(--paper);
+    min-height:100vh;
+    -webkit-font-smoothing:antialiased;
+  }
 
-        body {
-            background-color: var(--light-bg);
-            color: var(--dark-text);
-            line-height: 1.6;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
+  ::selection{background:var(--brass-light); color:var(--green-950);}
 
-        header {
-            background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
-            color: var(--white);
-            padding: 2.5rem 1rem;
-            text-align: center;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
+  a{color:var(--green-700);}
 
-        header h1 {
-            font-size: 2.2rem;
-            margin-bottom: 0.5rem;
-            letter-spacing: 0.5px;
-        }
+  /* ---------- Header ---------- */
+  header.site{
+    background:linear-gradient(180deg, var(--green-950), var(--green-900) 70%, var(--green-800));
+    color:#F3EFDE;
+    padding:28px 20px 34px;
+    position:relative;
+    border-bottom:4px solid var(--brass);
+    overflow:hidden;
+  }
+  header.site::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image: repeating-linear-gradient(135deg, rgba(255,255,255,0.03) 0 2px, transparent 2px 26px);
+    pointer-events:none;
+  }
+  .header-inner{
+    max-width:980px; margin:0 auto;
+    display:flex; align-items:center; gap:18px;
+    position:relative; z-index:1;
+  }
+  .seal{
+    flex:0 0 auto; width:64px; height:64px;
+    border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, var(--brass-light), var(--brass) 55%, #8a6a1f 100%);
+    display:flex; align-items:center; justify-content:center;
+    box-shadow: 0 0 0 3px rgba(243,239,222,0.15), 0 6px 16px rgba(0,0,0,0.35);
+  }
+  .seal svg{width:34px; height:34px; display:block;}
+  .header-text .eyebrow{
+    font-size:11.5px; letter-spacing:2.5px; text-transform:uppercase;
+    color:var(--brass-light); font-weight:600; margin:0 0 4px;
+  }
+  .header-text h1{
+    font-family:var(--serif);
+    margin:0; font-size:clamp(22px, 4vw, 32px);
+    font-weight:700; letter-spacing:0.2px; color:#FBF8EE;
+  }
+  .header-text p.sub{
+    margin:6px 0 0; font-size:13.5px; color:#CFE0D3; max-width:60ch;
+  }
+  .ref-strip{
+    max-width:980px; margin:18px auto 0; position:relative; z-index:1;
+    display:flex; flex-wrap:wrap; gap:10px 22px;
+    font-size:11.5px; color:#BFD3C4; border-top:1px solid rgba(255,255,255,0.14);
+    padding-top:12px; font-family:var(--mono);
+  }
+  .ref-strip b{color:#EDE6CC; font-family:var(--sans); font-weight:600;}
 
-        header p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-            font-weight: 300;
-        }
+  /* ---------- Layout ---------- */
+  main{
+    max-width:980px; margin:0 auto; padding:34px 20px 60px;
+  }
 
-        .container {
-            max-width: 800px;
-            margin: -2rem auto 3rem;
-            padding: 0 1rem;
-            width: 100%;
-            flex: 1;
-        }
+  .lede{
+    margin:0 0 26px;
+    color:var(--ink-soft);
+    font-size:14.5px;
+    max-width:70ch;
+  }
 
-        .card {
-            background: var(--white);
-            border-radius: 16px;
-            box-shadow: var(--shadow);
-            padding: 2.5rem;
-            margin-bottom: 2rem;
-            transition: var(--transition);
-        }
+  .grid{
+    display:grid;
+    grid-template-columns: minmax(0,1fr);
+    gap:26px;
+  }
+  @media (min-width:860px){
+    .grid{ grid-template-columns: 340px 1fr; align-items:start; }
+  }
 
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
+  .card{
+    background:var(--card);
+    border-radius:var(--radius-lg);
+    border:1px solid var(--line);
+    box-shadow: 0 1px 2px rgba(20,40,30,0.04), 0 12px 30px -14px rgba(20,40,30,0.18);
+  }
 
-        label {
-            display: block;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: var(--primary-green);
-        }
+  /* ---------- Form card ---------- */
+  .form-card{ padding:26px 24px 24px; position:sticky; top:20px; }
+  .form-card h2{
+    font-family:var(--serif);
+    font-size:19px; margin:0 0 4px; color:var(--green-900);
+  }
+  .form-card .hint{ font-size:12.5px; color:var(--ink-soft); margin:0 0 20px; }
 
-        select, input[type="number"] {
-            width: 100%;
-            padding: 0.85rem 1rem;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: var(--transition);
-            background-color: #fafafa;
-        }
+  label.field-label{
+    display:block; font-size:12.5px; font-weight:700;
+    letter-spacing:0.4px; text-transform:uppercase;
+    color:var(--green-800); margin:0 0 8px;
+  }
+  .field{ margin-bottom:20px; }
+  select, input[type="text"], input[type="number"]{
+    width:100%; font-family:var(--sans); font-size:15.5px;
+    padding:12px 14px; border-radius:var(--radius-sm);
+    border:1.5px solid var(--line); background:var(--paper);
+    color:var(--ink); transition:border-color .15s ease, box-shadow .15s ease, background .15s ease;
+  }
+  select:focus, input:focus{
+    outline:none; border-color:var(--green-600); background:#fff;
+    box-shadow:0 0 0 4px rgba(42,133,96,0.14);
+  }
+  select{ appearance:none; -webkit-appearance:none;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='9'><path d='M1 1l6 6 6-6' stroke='%23175038' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+    background-repeat:no-repeat; background-position:right 14px center; padding-right:38px;
+  }
 
-        select:focus, input[type="number"]:focus {
-            border-color: var(--secondary-green);
-            outline: none;
-            background-color: var(--white);
-            box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.15);
-        }
+  .toggle-row{ display:flex; gap:10px; }
+  .toggle-opt{
+    flex:1 1 0; position:relative; cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    padding:11px 10px; border-radius:var(--radius-sm);
+    border:1.5px solid var(--line); background:var(--paper);
+    font-size:14px; font-weight:600; color:var(--ink-soft);
+    transition:border-color .15s ease, background .15s ease, color .15s ease;
+  }
+  .toggle-opt input{ position:absolute; opacity:0; width:0; height:0; }
+  .toggle-opt:has(input:checked){
+    border-color:var(--green-600); background:var(--green-700); color:#F4F1DF;
+  }
+  .toggle-opt:has(input:focus-visible){ box-shadow:0 0 0 4px rgba(42,133,96,0.14); }
 
-        .btn-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 1rem;
-            margin-top: 2rem;
-        }
+  .btn-row{ display:flex; flex-wrap:wrap; gap:10px; margin-top:6px; }
+  button{
+    font-family:var(--sans); font-size:14px; font-weight:600;
+    border:none; cursor:pointer; border-radius:999px;
+    padding:12px 20px; transition:transform .12s ease, box-shadow .12s ease, background .15s ease;
+  }
+  button:active{ transform:translateY(1px); }
+  .btn-primary{
+    background:linear-gradient(180deg, var(--green-700), var(--green-800));
+    color:#F4F1DF; flex:1 1 auto; box-shadow:0 8px 20px -8px rgba(23,80,56,0.55);
+  }
+  .btn-primary:hover{ box-shadow:0 10px 22px -8px rgba(23,80,56,0.7); }
+  .btn-ghost{
+    background:transparent; color:var(--green-800);
+    border:1.5px solid var(--line);
+  }
+  .btn-ghost:hover{ border-color:var(--green-600); background:rgba(42,133,96,0.06); }
+  .btn-brass{
+    background:linear-gradient(180deg, var(--brass-light), var(--brass));
+    color:#3A2A08;
+  }
+  .btn-brass:hover{ filter:brightness(1.04); }
 
-        .btn {
-            padding: 0.85rem 1.5rem;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-        }
+  #errorMsg{
+    display:none; margin-top:16px; padding:12px 14px;
+    border-radius:var(--radius-sm); background:#FBEDEA; border:1px solid #EAC3BB;
+    color:var(--danger); font-size:13.5px; font-weight:600;
+  }
 
-        .btn-primary {
-            background-color: var(--primary-green);
-            color: var(--white);
-        }
+  /* ---------- Result column ---------- */
+  #resultArea{ display:none; }
+  .placeholder-card{
+    padding:60px 30px; text-align:center; color:var(--ink-soft);
+  }
+  .placeholder-card svg{ width:56px; height:56px; opacity:.5; margin-bottom:14px;}
+  .placeholder-card h3{ font-family:var(--serif); color:var(--green-900); margin:0 0 6px; font-size:18px;}
+  .placeholder-card p{ margin:0; font-size:13.5px; max-width:36ch; margin-inline:auto;}
 
-        .btn-primary:hover {
-            background-color: var(--secondary-green);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(27, 77, 62, 0.3);
-        }
+  .result-header{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:20px 24px; border-bottom:1px solid var(--line);
+    gap:12px; flex-wrap:wrap;
+  }
+  .result-header h2{ font-family:var(--serif); font-size:19px; margin:0; color:var(--green-900);}
+  .result-header .tag{
+    font-size:11.5px; font-weight:700; letter-spacing:.5px;
+    background:var(--green-900); color:#EDE6CC; padding:5px 12px; border-radius:999px;
+  }
 
-        .btn-secondary {
-            background-color: #e0e0e0;
-            color: #333;
-        }
+  .ledger{ padding:22px 24px 6px; }
 
-        .btn-secondary:hover {
-            background-color: #d0d0d0;
-            transform: translateY(-2px);
-        }
+  .step{
+    display:grid; grid-template-columns:34px 1fr auto; align-items:center;
+    gap:14px; padding:14px 4px;
+    position:relative;
+  }
+  .step + .step{ border-top:1px dashed var(--line); }
+  .step .num{
+    width:30px; height:30px; border-radius:50%;
+    background:var(--paper-2); border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--mono); font-size:12px; color:var(--green-800); font-weight:700;
+  }
+  .step .label{ font-size:13.5px; color:var(--ink-soft); font-weight:600; }
+  .step .label small{ display:block; font-weight:400; color:#8A8471; font-size:11.5px; margin-top:2px;}
+  .step .value{ font-family:var(--mono); font-size:16px; font-weight:700; color:var(--ink); white-space:nowrap;}
+  .step.base .value{ color:var(--green-900); }
 
-        .btn-accent {
-            background-color: var(--accent-gold);
-            color: #fff;
-        }
+  .divider-arrow{
+    display:flex; align-items:center; justify-content:center;
+    color:var(--brass); opacity:.75; padding:2px 0;
+  }
+  .divider-arrow svg{ width:16px; height:16px; }
 
-        .btn-accent:hover {
-            background-color: #c19b2e;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
-        }
+  .calc-block{
+    margin:10px 24px 18px; padding:16px 18px;
+    background:var(--paper); border:1px solid var(--line); border-radius:var(--radius-md);
+  }
+  .calc-block .row{
+    display:flex; justify-content:space-between; align-items:baseline;
+    gap:10px; padding:7px 0; font-size:14px;
+  }
+  .calc-block .row + .row{ border-top:1px solid var(--line); }
+  .calc-block .row .k{ color:var(--ink-soft); }
+  .calc-block .row .k small{ display:block; font-family:var(--mono); font-size:11px; color:#9A9480; margin-top:2px;}
+  .calc-block .row .v{ font-family:var(--mono); font-weight:700; white-space:nowrap; }
+  .calc-block.highlight{
+    background:linear-gradient(135deg, rgba(42,133,96,0.08), rgba(185,138,46,0.08));
+    border-color:var(--green-600);
+  }
 
-        .error-message {
-            background-color: #ffebee;
-            color: #c62828;
-            padding: 1rem;
-            border-radius: 8px;
-            border-left: 4px solid #c62828;
-            margin-top: 1.5rem;
-            font-weight: 500;
-            display: none;
-        }
+  .total-card{
+    margin:6px 24px 24px; padding:22px 22px;
+    border-radius:var(--radius-md);
+    background:linear-gradient(160deg, var(--green-800), var(--green-950));
+    color:#F4F1DF;
+    display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;
+  }
+  .total-card .t-label{ font-size:12.5px; letter-spacing:1px; text-transform:uppercase; color:var(--brass-light); font-weight:700;}
+  .total-card .t-value{ font-family:var(--mono); font-size:clamp(24px,4vw,34px); font-weight:800; margin-top:4px;}
+  .total-card .t-sub{ font-size:12px; color:#C9DBCB; margin-top:6px; max-width:32ch;}
 
-        .results-section {
-            display: none;
-            animation: fadeIn 0.4s ease forwards;
-        }
+  .result-actions{
+    display:flex; gap:10px; flex-wrap:wrap; padding:0 24px 24px;
+  }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+  /* ---------- Footer ---------- */
+  footer.site{
+    background:var(--green-950); color:#CFE0D3; padding:34px 20px 30px;
+    border-top:4px solid var(--brass); margin-top:40px;
+  }
+  .footer-inner{ max-width:980px; margin:0 auto; text-align:center; }
+  .footer-inner .dua{
+    font-family:var(--serif); font-size:15px; color:var(--brass-light);
+    letter-spacing:.3px; margin:0 0 10px;
+  }
+  .footer-inner .name{ font-size:16px; font-weight:700; color:#F4F1DF; margin:0; }
+  .footer-inner .role{ font-size:13px; color:#B9CDBC; margin:2px 0 0; }
+  .footer-inner .dept{ font-size:13px; color:#B9CDBC; margin:0; }
+  .footer-rule{ width:70px; height:2px; background:var(--brass); margin:18px auto; opacity:.6; }
+  .footer-note{ font-size:11.5px; color:#7C9587; max-width:60ch; margin:0 auto; }
 
-        .results-header {
-            text-align: center;
-            margin-bottom: 2rem;
-            border-bottom: 2px solid var(--light-green);
-            padding-bottom: 1rem;
-        }
+  @media print{
+    header.site, footer.site, .form-card, .result-actions, .divider-arrow{ }
+    body{ background:#fff; }
+    header.site{ background:#123B2C !important; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    .btn-row, .result-actions{ display:none !important; }
+  }
 
-        .results-header h2 {
-            color: var(--primary-green);
-            font-size: 1.8rem;
-        }
-
-        .result-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1rem;
-        }
-
-        .result-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 1.25rem;
-            background: #fafafa;
-            border-radius: 8px;
-            border: 1px solid #eee;
-            transition: var(--transition);
-        }
-
-        .result-item:hover {
-            background: var(--light-green);
-            border-color: #c8e6c9;
-        }
-
-        .result-label {
-            font-weight: 600;
-            color: #555;
-        }
-
-        .result-value {
-            font-weight: 700;
-            font-size: 1.15rem;
-            color: var(--primary-green);
-        }
-
-        .result-item.highlight {
-            background: linear-gradient(135deg, var(--light-green), #d4edda);
-            border-color: var(--secondary-green);
-        }
-
-        .result-item.highlight .result-label,
-        .result-item.highlight .result-value {
-            color: var(--primary-green);
-            font-size: 1.25rem;
-        }
-
-        footer {
-            background-color: var(--primary-green);
-            color: var(--white);
-            text-align: center;
-            padding: 2rem 1rem;
-            margin-top: auto;
-            border-top: 4px solid var(--accent-gold);
-        }
-
-        footer p {
-            margin: 0.3rem 0;
-            font-size: 0.95rem;
-            opacity: 0.9;
-        }
-
-        footer .prayer {
-            font-style: italic;
-            color: var(--accent-gold);
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-
-        footer .author {
-            font-weight: 700;
-            font-size: 1.1rem;
-            letter-spacing: 0.5px;
-        }
-
-        @media print {
-            body {
-                background: none;
-            }
-            header, .btn-container, footer {
-                display: none;
-            }
-            .container {
-                margin: 0;
-                max-width: 100%;
-            }
-            .card {
-                box-shadow: none;
-                border: 1px solid #ccc;
-                padding: 1rem;
-            }
-            .results-section {
-                display: block !important;
-            }
-        }
-    </style>
+  @media (max-width:520px){
+    .step{ grid-template-columns:26px 1fr auto; gap:10px; }
+    .step .value{ font-size:14px; }
+    .total-card{ flex-direction:column; align-items:flex-start; }
+  }
+</style>
 </head>
 <body>
 
-    <header>
-        <h1>Government of Pakistan</h1>
-        <p>Salary Increase & Revision Calculator (2026)</p>
-    </header>
-
-    <div class="container">
-        <div class="card">
-            <form id="salaryForm" onsubmit="return false;">
-                <div class="form-group">
-                    <label for="bpsSelect">Current Pay Scale</label>
-                    <select id="bpsSelect" required>
-                        <option value="" disabled selected>-- Select Basic Pay Scale --</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="currentPayInput">Current Basic Pay (PKR)</label>
-                    <input type="number" id="currentPayInput" placeholder="e.g. 45070" required min="0">
-                </div>
-
-                <div id="errorBox" class="error-message"></div>
-
-                <div class="btn-container">
-                    <button type="button" class="btn btn-primary" onclick="calculateSalary()">
-                        Calculate
-                    </button>
-                    <button type="button" class="btn btn-secondary" onclick="resetCalculator()">
-                        Reset
-                    </button>
-                    <button type="button" class="btn btn-accent" onclick="printResult()" id="printBtn" style="display: none;">
-                        Print Result
-                    </button>
-                    <button type="button" class="btn btn-secondary" onclick="copyResult()" id="copyBtn" style="display: none;">
-                        Copy Result
-                    </button>
-                </div>
-            </form>
-
-            <div id="resultsSection" class="results-section">
-                <div class="results-header">
-                    <h2>Calculation Breakdown</h2>
-                </div>
-
-                <div class="result-grid">
-                    <div class="result-item">
-                        <span class="result-label">Current Basic Pay</span>
-                        <span class="result-value" id="resCurrentPay">0</span>
-                    </div>
-                    <div class="result-item">
-                        <span class="result-label">Stage</span>
-                        <span class="result-value" id="resStage">0</span>
-                    </div>
-                    <div class="result-item">
-                        <span class="result-label">2022 Basic Pay</span>
-                        <span class="result-value" id="res2022Pay">0</span>
-                    </div>
-                    <div class="result-item">
-                        <span class="result-label">2026 Revised Basic Pay</span>
-                        <span class="result-value" id="res2026Pay">0</span>
-                    </div>
-                    <div class="result-item">
-                        <span class="result-label">7% ARA</span>
-                        <span class="result-value" id="resARA">0</span>
-                    </div>
-                    <div class="result-item">
-                        <span class="result-label">15% DRA</span>
-                        <span class="result-value" id="resDRA">0</span>
-                    </div>
-                    <div class="result-item highlight">
-                        <span class="result-label">Gross Salary</span>
-                        <span class="result-value" id="resGross">0</span>
-                    </div>
-                    <div class="result-item highlight">
-                        <span class="result-label">Total Increase</span>
-                        <span class="result-value" id="resIncrease">0</span>
-                    </div>
-                </div>
-            </div>
-        </div>
+<header class="site">
+  <div class="header-inner">
+    <div class="seal" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none">
+        <path d="M14.5 3a7 7 0 1 0 0 13.9A8 8 0 1 1 14.5 3Z" fill="#123B2C"/>
+        <path d="M17.2 4.6l.7 1.9 2 .2-1.5 1.3.5 2-1.7-1.1-1.7 1.1.5-2-1.5-1.3 2-.2z" fill="#123B2C"/>
+      </svg>
     </div>
+    <div class="header-text">
+      <p class="eyebrow">Government of Pakistan &middot; Ministry of Finance</p>
+      <h1>Salary Increase Calculator 2026</h1>
+      <p class="sub">Basic pay revision, Adhoc Relief, Disparity Reduction &amp; Conveyance Allowance — computed strictly from the official pay scales and the Ministry of Finance notification dated 21 July 2026.</p>
+    </div>
+  </div>
+  <div class="ref-strip">
+    <div><b>Notification:</b> No.3(1)R-5/2010-P-001</div>
+    <div><b>Effective:</b> 01-07-2026</div>
+    <div><b>Scales covered:</b> BPS-01 to BPS-22</div>
+  </div>
+</header>
 
-    <footer>
-        <p class="prayer">Remember in Your Prayers</p>
-        <p class="author">Naveed Ahmed Zai</p>
-        <p>Assistant Ministerial</p>
-        <p>Pakistan Meteorological Department (PMD), Karachi</p>
-    </footer>
+<main>
+  <p class="lede">Select your pay scale and enter your current basic pay (as per the 2022 pay scale). The calculator will locate the matching stage, pull the 2026 revised basic pay, and compute the 7% Adhoc Relief Allowance, 15% Disparity Reduction Allowance, and the revised Conveyance Allowance exactly as prescribed.</p>
 
-    <script>
-        // Automatically extracted Excel Database for BPS-01 to BPS-22
-        const salaryDatabase = {
-            "BPS-01": {
-                "2022": [13550, 13980, 14410, 14840, 15270, 15700, 16130, 16560, 16990, 17420, 17850, 18280, 18710, 19140, 19570, 20000, 20430, 20860, 21290, 21720, 22150, 22580, 23010, 23440, 23870, 24300, 24730, 25160, 25590, 26020, 26450],
-                "2026": [16280, 16800, 17320, 17840, 18360, 18880, 19400, 19920, 20440, 20960, 21480, 22000, 22520, 23040, 23560, 24080, 24600, 25120, 25640, 26160, 26680, 27200, 27720, 28240, 28760, 29280, 29800, 30320, 30840, 31360, 31880]
-            },
-            "BPS-02": {
-                "2022": [13820, 14310, 14800, 15290, 15780, 16270, 16760, 17250, 17740, 18230, 18720, 19210, 19700, 20190, 20680, 21170, 21660, 22150, 22640, 23130, 23620, 24110, 24600, 25090, 25580, 26070, 26560, 27050, 27540, 28030, 28520],
-                "2026": [16600, 17190, 17780, 18370, 18960, 19550, 20140, 20730, 21320, 21910, 22500, 23090, 23680, 24270, 24860, 25450, 26040, 26630, 27220, 27810, 28400, 28990, 29580, 30170, 30760, 31350, 31940, 32530, 33120, 33710, 34300]
-            },
-            "BPS-03": {
-                "2022": [14260, 14840, 15420, 16000, 16580, 17160, 17740, 18320, 18900, 19480, 20060, 20640, 21220, 21800, 22380, 22960, 23540, 24120, 24700, 25280, 25860, 26440, 27020, 27600, 28180, 28760, 29340, 29920, 30500, 31080, 31660],
-                "2026": [17130, 17830, 18530, 19230, 19930, 20630, 21330, 22030, 22730, 23430, 24130, 24830, 25530, 26230, 26930, 27630, 28330, 29030, 29730, 30430, 31130, 31830, 32530, 33230, 33930, 34630, 35330, 36030, 36730, 37430, 38130]
-            },
-            "BPS-04": {
-                "2022": [14690, 15350, 16010, 16670, 17330, 17990, 18650, 19310, 19970, 20630, 21290, 21950, 22610, 23270, 23930, 24590, 25250, 25910, 26570, 27230, 27890, 28550, 29210, 29870, 30530, 31190, 31850, 32510, 33170, 33830, 34490],
-                "2026": [17650, 18450, 19250, 20050, 20850, 21650, 22450, 23250, 24050, 24850, 25650, 26450, 27250, 28050, 28850, 29650, 30450, 31250, 32050, 32850, 33650, 34450, 35250, 36050, 36850, 37650, 38450, 39250, 40050, 40850, 41650]
-            },
-            "BPS-05": {
-                "2022": [15230, 15980, 16730, 17480, 18230, 18980, 19730, 20480, 21230, 21980, 22730, 23480, 24230, 24980, 25730, 26480, 27230, 27980, 28730, 29480, 30230, 30980, 31730, 32480, 33230, 33980, 34730, 35480, 36230, 36980, 37730],
-                "2026": [18300, 19210, 20120, 21030, 21940, 22850, 23760, 24670, 25580, 26490, 27400, 28310, 29220, 30130, 31040, 31950, 32860, 33770, 34680, 35590, 36500, 37410, 38320, 39230, 40140, 41050, 41960, 42870, 43780, 44690, 45600]
-            },
-            "BPS-06": {
-                "2022": [15760, 16600, 17440, 18280, 19120, 19960, 20800, 21640, 22480, 23320, 24160, 25000, 25840, 26680, 27520, 28360, 29200, 30040, 30880, 31720, 32560, 33400, 34240, 35080, 35920, 36760, 37600, 38440, 39280, 40120, 40960],
-                "2026": [18930, 19940, 20950, 21960, 22970, 23980, 24990, 26000, 27010, 28020, 29030, 30040, 31050, 32060, 33070, 34080, 35090, 36100, 37110, 38120, 39130, 40140, 41150, 42160, 43170, 44180, 45190, 46200, 47210, 48220, 49230]
-            },
-            "BPS-07": {
-                "2022": [16310, 17220, 18130, 19040, 19950, 20860, 21770, 22680, 23590, 24500, 25410, 26320, 27230, 28140, 29050, 29960, 30870, 31780, 32690, 33600, 34510, 35420, 36330, 37240, 38150, 39060, 39970, 40880, 41790, 42700, 43610],
-                "2026": [19590, 20690, 21790, 22890, 23990, 25090, 26190, 27290, 28390, 29490, 30590, 31690, 32790, 33890, 34990, 36090, 37190, 38290, 39390, 40490, 41590, 42690, 43790, 44890, 45990, 47090, 48190, 49290, 50390, 51490, 52590]
-            },
-            "BPS-08": {
-                "2022": [16890, 17890, 18890, 19890, 20890, 21890, 22890, 23890, 24890, 25890, 26890, 27890, 28890, 29890, 30890, 31890, 32890, 33890, 34890, 35890, 36890, 37890, 38890, 39890, 40890, 41890, 42890, 43890, 44890, 45890, 46890],
-                "2026": [20290, 21500, 22710, 23920, 25130, 26340, 27550, 28760, 29970, 31180, 32390, 33600, 34810, 36020, 37230, 38440, 39650, 40860, 42070, 43280, 44490, 45700, 46910, 48120, 49330, 50540, 51750, 52960, 54170, 55380, 56590]
-            },
-            "BPS-09": {
-                "2022": [17470, 18560, 19650, 20740, 21830, 22920, 24010, 25100, 26190, 27280, 28370, 29460, 30550, 31640, 32730, 33820, 34910, 36000, 37090, 38180, 39270, 40360, 41450, 42540, 43630, 44720, 45810, 46900, 47990, 49080, 50170],
-                "2026": [20990, 22300, 23610, 24920, 26230, 27540, 28850, 30160, 31470, 32780, 34090, 35400, 36710, 38020, 39330, 40640, 41950, 43260, 44570, 45880, 47190, 48500, 49810, 51120, 52430, 53740, 55050, 56360, 57670, 58980, 60290]
-            },
-            "BPS-10": {
-                "2022": [18050, 19240, 20430, 21620, 22810, 24000, 25190, 26380, 27570, 28760, 29950, 31140, 32330, 33520, 34710, 35900, 37090, 38280, 39470, 40660, 41850, 43040, 44230, 45420, 46610, 47800, 48990, 50180, 51370, 52560, 53750],
-                "2026": [21680, 23110, 24540, 25970, 27400, 28830, 30260, 31690, 33120, 34550, 35980, 37410, 38840, 40270, 41700, 43130, 44560, 45990, 47420, 48850, 50280, 51710, 53140, 54570, 56000, 57430, 58860, 60290, 61720, 63150, 64580]
-            },
-            "BPS-11": {
-                "2022": [18650, 19960, 21270, 22580, 23890, 25200, 26510, 27820, 29130, 30440, 31750, 33060, 34370, 35680, 36990, 38300, 39610, 40920, 42230, 43540, 44850, 46160, 47470, 48780, 50090, 51400, 52710, 54020, 55330, 56640, 57950],
-                "2026": [22410, 23970, 25530, 27090, 28650, 30210, 31770, 33330, 34890, 36450, 38010, 39570, 41130, 42690, 44250, 45810, 47370, 48930, 50490, 52050, 53610, 55170, 56730, 58290, 59850, 61410, 62970, 64530, 66090, 67650, 69810]
-            },
-            "BPS-12": {
-                "2022": [19770, 21200, 22630, 24060, 25490, 26920, 28350, 29780, 31210, 32640, 34070, 35500, 36930, 38360, 39790, 41220, 42650, 44080, 45510, 46940, 48370, 49800, 51230, 52660, 54090, 55520, 56950, 58380, 59810, 61240, 62670],
-                "2026": [23750, 25470, 27190, 28910, 30630, 32350, 34070, 35790, 37510, 39230, 40950, 42670, 44390, 46110, 47830, 49550, 51270, 52990, 54710, 56430, 58150, 59870, 61590, 63310, 65030, 66750, 68470, 70190, 71910, 73630, 75350]
-            },
-            "BPS-13": {
-                "2022": [21160, 22720, 24280, 25840, 27400, 28960, 30520, 32080, 33640, 35200, 36760, 38320, 39880, 41440, 43000, 44560, 46120, 47680, 49240, 50800, 52360, 53920, 55480, 57040, 58600, 60160, 61720, 63280, 64840, 66400, 67960],
-                "2026": [25420, 27290, 29160, 31030, 32900, 34770, 36640, 38510, 40380, 42250, 44120, 45990, 47860, 49730, 51600, 53470, 55340, 57210, 59080, 60950, 62820, 64690, 66560, 68430, 70300, 72170, 74040, 75910, 77780, 79650, 81820]
-            },
-            "BPS-14": {
-                "2022": [22530, 24270, 26010, 27750, 29490, 31230, 32970, 34710, 36450, 38190, 39930, 41670, 43410, 45150, 46890, 48630, 50370, 52110, 53850, 55590, 57330, 59070, 60810, 62550, 64290, 66030, 67770, 69510, 71250, 72990, 74730],
-                "2026": [27060, 29150, 31240, 33330, 35420, 37510, 39600, 41690, 43780, 45870, 47960, 50050, 52140, 54230, 56320, 58410, 60500, 62590, 64680, 66770, 68860, 70950, 73040, 75130, 77220, 79310, 81400, 83490, 85580, 87670, 89760]
-            },
-            "BPS-15": {
-                "2022": [23920, 25890, 27860, 29830, 31800, 33770, 35740, 37710, 39680, 41650, 43620, 45590, 47560, 49530, 51500, 53470, 55440, 57410, 59380, 61350, 63320, 65290, 67260, 69230, 71200, 73170, 75140, 77110, 79080, 81050, 83320],
-                "2026": [28730, 31100, 33470, 35840, 38210, 40580, 42950, 45320, 47690, 50060, 52430, 54800, 57170, 59540, 61910, 64280, 66650, 69020, 71390, 73760, 76130, 78500, 80870, 83240, 85610, 87980, 90350, 92720, 95090, 97460, 100130]
-            },
-            "BPS-16": {
-                "2022": [28070, 30330, 32590, 34850, 37110, 39370, 41630, 43890, 46150, 48410, 50670, 52930, 55190, 57450, 59710, 61970, 64230, 66490, 68750, 71010, 73270, 75530, 77790, 80050, 82310, 84570, 86830, 89090, 91350, 93610, 95870],
-                "2026": [33720, 36440, 39160, 41880, 44600, 47320, 50040, 52760, 55480, 58200, 60920, 63640, 66360, 69080, 71800, 74520, 77240, 79960, 82680, 85400, 88120, 90840, 93560, 96280, 99000, 101720, 104440, 107160, 109880, 112600, 115320]
-            },
-            "BPS-17": {
-                "2022": [45070, 48490, 51910, 55330, 58750, 62170, 65590, 69010, 72430, 75850, 79270, 82690, 86110, 89530, 92950, 96370, 99790, 103210, 106630, 110050, 113470],
-                "2026": [54140, 58250, 62360, 66470, 70580, 74690, 78800, 82910, 87020, 91130, 95240, 99350, 103460, 107570, 111680, 115790, 119900, 124010, 128120, 132230, 136340]
-            },
-            "BPS-18": {
-                "2022": [56880, 61140, 65400, 69660, 73920, 78180, 82440, 86700, 90960, 95220, 99480, 103740, 108000, 112260, 116520, 120780, 125040, 129300, 133560, 137820, 142080],
-                "2026": [68330, 73450, 78570, 83690, 88810, 93930, 99050, 104170, 109290, 114410, 119530, 124650, 129770, 134890, 140010, 145130, 150250, 155370, 160490, 165610, 170730]
-            },
-            "BPS-19": {
-                "2022": [87840, 92370, 96900, 101430, 105960, 110490, 115020, 119550, 124080, 128610, 133140, 137670, 142200, 146730, 151260, 155790, 160320, 164850, 169380, 173910, 178440],
-                "2026": [105510, 110960, 116410, 121860, 127310, 132760, 138210, 143660, 149110, 154560, 160010, 165460, 170910, 176360, 181810, 187260, 192710, 198160, 203610, 209060, 214510]
-            },
-            "BPS-20": {
-                "2022": [102470, 109160, 115850, 122540, 129230, 135920, 142610, 149300, 155990, 162680, 169370, 176060, 182750, 189440, 196130],
-                "2026": [123090, 131130, 139170, 147210, 155250, 163290, 171330, 179370, 187410, 195450, 203490, 211530, 219570, 227610, 235650]
-            },
-            "BPS-21": {
-                "2022": [113790, 121210, 128630, 136050, 143470, 150890, 158310, 165730, 173150, 180570, 187990, 195410, 202830, 210250, 217670],
-                "2026": [136680, 145600, 154520, 163440, 172360, 181280, 190200, 199120, 208040, 216960, 225880, 234800, 243720, 252640, 261560]
-            },
-            "BPS-22": {
-                "2022": [122190, 130900, 139610, 148320, 157030, 165740, 174450, 183160, 191870, 200580, 209290, 218000, 226710, 235420, 244130],
-                "2026": [146770, 157240, 167710, 178180, 188650, 199120, 209590, 220060, 230530, 241000, 251470, 261940, 272410, 282880, 293350]
-            }
-        };
+  <div class="grid">
+    <!-- FORM CARD -->
+    <section class="card form-card">
+      <h2>Enter Your Details</h2>
+      <p class="hint">Only two inputs required — everything else is derived from official records.</p>
 
-        // Populate Dropdown on load
-        window.addEventListener('DOMContentLoaded', () => {
-            const bpsSelect = document.getElementById('bpsSelect');
-            for (let i = 1; i <= 22; i++) {
-                const bpsVal = `BPS-${i < 10 ? '0' + i : i}`;
-                const option = document.createElement('option');
-                option.value = bpsVal;
-                option.textContent = bpsVal;
-                bpsSelect.appendChild(option);
-            }
-        });
+      <div class="field">
+        <label class="field-label" for="bpsSelect">Pay Scale</label>
+        <select id="bpsSelect"></select>
+      </div>
 
-        function calculateSalary() {
-            const bps = document.getElementById('bpsSelect').value;
-            const currentPayInput = document.getElementById('currentPayInput').value;
-            const errorBox = document.getElementById('errorBox');
-            const resultsSection = document.getElementById('resultsSection');
-            const printBtn = document.getElementById('printBtn');
-            const copyBtn = document.getElementById('copyBtn');
+      <div class="field">
+        <label class="field-label" for="basicPayInput">Current Basic Pay (Rs.)</label>
+        <input type="text" inputmode="numeric" id="basicPayInput" placeholder="e.g. 22580">
+      </div>
 
-            // Reset UI states
-            errorBox.style.display = 'none';
-            errorBox.textContent = '';
+      <div class="field">
+        <label class="field-label">Is 15% Disparity Reduction Allowance (DRA) Admissible?</label>
+        <div class="toggle-row" role="radiogroup" aria-label="DRA applicable">
+          <label class="toggle-opt">
+            <input type="radio" name="draApplicable" value="yes" checked>
+            <span>Yes</span>
+          </label>
+          <label class="toggle-opt">
+            <input type="radio" name="draApplicable" value="no">
+            <span>No</span>
+          </label>
+        </div>
+        <p class="hint" style="margin-top:8px;">Some Ministries / Divisions do not allow DRA. Select "No" to exclude it from the calculation.</p>
+      </div>
 
-            if (!bps) {
-                showError("Please select a Current Pay Scale.");
-                return;
-            }
+      <div class="btn-row">
+        <button class="btn-primary" id="calcBtn">Calculate</button>
+        <button class="btn-ghost" id="resetBtn">Reset</button>
+      </div>
 
-            if (currentPayInput === '') {
-                showError("Please enter Current Basic Pay.");
-                return;
-            }
+      <div id="errorMsg"></div>
+    </section>
 
-            const currentPay = parseInt(currentPayInput, 10);
-            const scaleData = salaryDatabase[bps];
-            
-            // Step 1: Find Stage matching current Basic Pay in 2022 scale
-            // (Note: Excel 2022 basic pay schedule corresponds to current basic pay structure)
-            const stageIndex = scaleData["2022"].indexOf(currentPay);
+    <!-- RESULT COLUMN -->
+    <section>
+      <div class="card placeholder-card" id="placeholderCard">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#175038" stroke-width="1.4"><path d="M4 4h16v16H4z" stroke-opacity="0"/><path d="M6 8h12M6 12h12M6 16h8" stroke-linecap="round"/><rect x="4" y="4" width="16" height="16" rx="3"/></svg>
+        <h3>Results will appear here</h3>
+        <p>Choose a pay scale and enter your current basic pay, then press Calculate.</p>
+      </div>
 
-            if (stageIndex === -1) {
-                showError("Current Basic Pay not found for selected BPS.");
-                resultsSection.style.display = 'none';
-                printBtn.style.display = 'none';
-                copyBtn.style.display = 'none';
-                return;
-            }
+      <div class="card" id="resultArea">
+        <div class="result-header">
+          <h2>Your Salary Breakdown</h2>
+          <span class="tag" id="resultBpsTag">BPS-01</span>
+        </div>
 
-            const stage = stageIndex;
-            const pay2022 = scaleData["2022"][stage];
-            const pay2026 = scaleData["2026"][stage];
+        <div class="ledger" id="ledgerSteps"></div>
 
-            // Step 3: Calculate 7% ARA
-            const ara = pay2026 * 0.07;
+        <div class="calc-block highlight" id="conveyanceBlock"></div>
 
-            // Step 4: Calculate 15% DRA
-            const dra = pay2022 * 0.15;
+        <div class="total-card">
+          <div>
+            <div class="t-label">Total Increase</div>
+            <div class="t-value" id="totalIncreaseValue">Rs. 0</div>
+            <div class="t-sub">Sum of Basic Pay Increase + 7% ARA + 15% DRA + Increase in Conveyance Allowance</div>
+          </div>
+        </div>
 
-            // Step 5: Calculate Gross Salary
-            const grossSalary = pay2026 + ara + dra;
+        <div class="result-actions">
+          <button class="btn-brass" id="copyBtn">Copy Result</button>
+          <button class="btn-ghost" id="printBtn">Print Result</button>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
 
-            // Step 6: Calculate Total Increase
-            const totalIncrease = grossSalary - currentPay;
+<footer class="site">
+  <div class="footer-inner">
+    <p class="dua">Remember in Your Prayers</p>
+    <p class="name">Naveed Ahmed Zai</p>
+    <p class="role">Assistant Ministerial</p>
+    <p class="dept">Pakistan Meteorological Department (PMD), Karachi</p>
+    <div class="footer-rule"></div>
+    <p class="footer-note">Figures are derived solely from the attached 2026 pay scale record and the Ministry of Finance Office Memorandum No.3(1)R-5/2010-P-001 dated 21 July 2026 on revision of Conveyance Allowance. This tool is unofficial and intended for reference only.</p>
+  </div>
+</footer>
 
-            // Step 2 & Output Display
-            document.getElementById('resCurrentPay').textContent = currentPay.toLocaleString("en-PK");
-            document.getElementById('resStage').textContent = stage;
-            document.getElementById('res2022Pay').textContent = pay2022.toLocaleString("en-PK");
-            document.getElementById('res2026Pay').textContent = pay2026.toLocaleString("en-PK");
-            document.getElementById('resARA').textContent = Math.round(ara).toLocaleString("en-PK");
-            document.getElementById('resDRA').textContent = Math.round(dra).toLocaleString("en-PK");
-            document.getElementById('resGross').textContent = Math.round(grossSalary).toLocaleString("en-PK");
-            document.getElementById('resIncrease').textContent = Math.round(totalIncrease).toLocaleString("en-PK");
+<script>
+/* =========================================================
+   SALARY DATABASE — extracted directly from Sheet1 of the
+   supplied "New Pay Scales for 2026.xlsx". Index 0 = Stage 0.
+   ========================================================= */
+const SAL_DATA = {"1":{"2022":[13550,13980,14410,14840,15270,15700,16130,16560,16990,17420,17850,18280,18710,19140,19570,20000,20430,20860,21290,21720,22150,22580,23010,23440,23870,24300,24730,25160,25590,26020,26450],"2026":[16280,16800,17320,17840,18360,18880,19400,19920,20440,20960,21480,22000,22520,23040,23560,24080,24600,25120,25640,26160,26680,27200,27720,28240,28760,29280,29800,30320,30840,31360,31880]},
+"2":{"2022":[13820,14310,14800,15290,15780,16270,16760,17250,17740,18230,18720,19210,19700,20190,20680,21170,21660,22150,22640,23130,23620,24110,24600,25090,25580,26070,26560,27050,27540,28030,28520],"2026":[16600,17190,17780,18370,18960,19550,20140,20730,21320,21910,22500,23090,23680,24270,24860,25450,26040,26630,27220,27810,28400,28990,29580,30170,30760,31350,31940,32530,33120,33710,34300]},
+"3":{"2022":[14260,14840,15420,16000,16580,17160,17740,18320,18900,19480,20060,20640,21220,21800,22380,22960,23540,24120,24700,25280,25860,26440,27020,27600,28180,28760,29340,29920,30500,31080,31660],"2026":[17130,17830,18530,19230,19930,20630,21330,22030,22730,23430,24130,24830,25530,26230,26930,27630,28330,29030,29730,30430,31130,31830,32530,33230,33930,34630,35330,36030,36730,37430,38130]},
+"4":{"2022":[14690,15350,16010,16670,17330,17990,18650,19310,19970,20630,21290,21950,22610,23270,23930,24590,25250,25910,26570,27230,27890,28550,29210,29870,30530,31190,31850,32510,33170,33830,34490],"2026":[17650,18450,19250,20050,20850,21650,22450,23250,24050,24850,25650,26450,27250,28050,28850,29650,30450,31250,32050,32850,33650,34450,35250,36050,36850,37650,38450,39250,40050,40850,41650]},
+"5":{"2022":[15230,15980,16730,17480,18230,18980,19730,20480,21230,21980,22730,23480,24230,24980,25730,26480,27230,27980,28730,29480,30230,30980,31730,32480,33230,33980,34730,35480,36230,36980,37730],"2026":[18300,19210,20120,21030,21940,22850,23760,24670,25580,26490,27400,28310,29220,30130,31040,31950,32860,33770,34680,35590,36500,37410,38320,39230,40140,41050,41960,42870,43780,44690,45600]},
+"6":{"2022":[15760,16600,17440,18280,19120,19960,20800,21640,22480,23320,24160,25000,25840,26680,27520,28360,29200,30040,30880,31720,32560,33400,34240,35080,35920,36760,37600,38440,39280,40120,40960],"2026":[18930,19940,20950,21960,22970,23980,24990,26000,27010,28020,29030,30040,31050,32060,33070,34080,35090,36100,37110,38120,39130,40140,41150,42160,43170,44180,45190,46200,47210,48220,49230]},
+"7":{"2022":[16310,17220,18130,19040,19950,20860,21770,22680,23590,24500,25410,26320,27230,28140,29050,29960,30870,31780,32690,33600,34510,35420,36330,37240,38150,39060,39970,40880,41790,42700,43610],"2026":[19590,20690,21790,22890,23990,25090,26190,27290,28390,29490,30590,31690,32790,33890,34990,36090,37190,38290,39390,40490,41590,42690,43790,44890,45990,47090,48190,49290,50390,51490,52590]},
+"8":{"2022":[16890,17890,18890,19890,20890,21890,22890,23890,24890,25890,26890,27890,28890,29890,30890,31890,32890,33890,34890,35890,36890,37890,38890,39890,40890,41890,42890,43890,44890,45890,46890],"2026":[20290,21500,22710,23920,25130,26340,27550,28760,29970,31180,32390,33600,34810,36020,37230,38440,39650,40860,42070,43280,44490,45700,46910,48120,49330,50540,51750,52960,54170,55380,56590]},
+"9":{"2022":[17470,18560,19650,20740,21830,22920,24010,25100,26190,27280,28370,29460,30550,31640,32730,33820,34910,36000,37090,38180,39270,40360,41450,42540,43630,44720,45810,46900,47990,49080,50170],"2026":[20990,22300,23610,24920,26230,27540,28850,30160,31470,32780,34090,35400,36710,38020,39330,40640,41950,43260,44570,45880,47190,48500,49810,51120,52430,53740,55050,56360,57670,58980,60290]},
+"10":{"2022":[18050,19240,20430,21620,22810,24000,25190,26380,27570,28760,29950,31140,32330,33520,34710,35900,37090,38280,39470,40660,41850,43040,44230,45420,46610,47800,48990,50180,51370,52560,53750],"2026":[21680,23110,24540,25970,27400,28830,30260,31690,33120,34550,35980,37410,38840,40270,41700,43130,44560,45990,47420,48850,50280,51710,53140,54570,56000,57430,58860,60290,61720,63150,64580]},
+"11":{"2022":[18650,19960,21270,22580,23890,25200,26510,27820,29130,30440,31750,33060,34370,35680,36990,38300,39610,40920,42230,43540,44850,46160,47470,48780,50090,51400,52710,54020,55330,56640,57950],"2026":[22410,23990,25570,27150,28730,30310,31890,33470,35050,36630,38210,39790,41370,42950,44530,46110,47690,49270,50850,52430,54010,55590,57170,58750,60330,61910,63490,65070,66650,68230,69810]},
+"12":{"2022":[19770,21200,22630,24060,25490,26920,28350,29780,31210,32640,34070,35500,36930,38360,39790,41220,42650,44080,45510,46940,48370,49800,51230,52660,54090,55520,56950,58380,59810,61240,62670],"2026":[23750,25470,27190,28910,30630,32350,34070,35790,37510,39230,40950,42670,44390,46110,47830,49550,51270,52990,54710,56430,58150,59870,61590,63310,65030,66750,68470,70190,71910,73630,75350]},
+"13":{"2022":[21160,22720,24280,25840,27400,28960,30520,32080,33640,35200,36760,38320,39880,41440,43000,44560,46120,47680,49240,50800,52360,53920,55480,57040,58600,60160,61720,63280,64840,66400,67960],"2026":[25420,27300,29180,31060,32940,34820,36700,38580,40460,42340,44220,46100,47980,49860,51740,53620,55500,57380,59260,61140,63020,64900,66780,68660,70540,72420,74300,76180,78060,79940,81820]},
+"14":{"2022":[22530,24270,26010,27750,29490,31230,32970,34710,36450,38190,39930,41670,43410,45150,46890,48630,50370,52110,53850,55590,57330,59070,60810,62550,64290,66030,67770,69510,71250,72990,74730],"2026":[27060,29150,31240,33330,35420,37510,39600,41690,43780,45870,47960,50050,52140,54230,56320,58410,60500,62590,64680,66770,68860,70950,73040,75130,77220,79310,81400,83490,85580,87670,89760]},
+"15":{"2022":[23920,25900,27880,29860,31840,33820,35800,37780,39760,41740,43720,45700,47680,49660,51640,53620,55600,57580,59560,61540,63520,65500,67480,69460,71440,73420,75400,77380,79360,81340,83320],"2026":[28730,31110,33490,35870,38250,40630,43010,45390,47770,50150,52530,54910,57290,59670,62050,64430,66810,69190,71570,73950,76330,78710,81090,83470,85850,88230,90610,92990,95370,97750,100130]},
+"16":{"2022":[28070,30330,32590,34850,37110,39370,41630,43890,46150,48410,50670,52930,55190,57450,59710,61970,64230,66490,68750,71010,73270,75530,77790,80050,82310,84570,86830,89090,91350,93610,95870],"2026":[33720,36440,39160,41880,44600,47320,50040,52760,55480,58200,60920,63640,66360,69080,71800,74520,77240,79960,82680,85400,88120,90840,93560,96280,99000,101720,104440,107160,109880,112600,115320]},
+"17":{"2022":[45070,48490,51910,55330,58750,62170,65590,69010,72430,75850,79270,82690,86110,89530,92950,96370,99790,103210,106630,110050,113470],"2026":[54140,58250,62360,66470,70580,74690,78800,82910,87020,91130,95240,99350,103460,107570,111680,115790,119900,124010,128120,132230,136340]},
+"18":{"2022":[56880,61140,65400,69660,73920,78180,82440,86700,90960,95220,99480,103740,108000,112260,116520,120780,125040,129300,133560,137820,142080],"2026":[68330,73450,78570,83690,88810,93930,99050,104170,109290,114410,119530,124650,129770,134890,140010,145130,150250,155370,160490,165610,170730]},
+"19":{"2022":[87840,92370,96900,101430,105960,110490,115020,119550,124080,128610,133140,137670,142200,146730,151260,155790,160320,164850,169380,173910,178440],"2026":[105510,110960,116410,121860,127310,132760,138210,143660,149110,154560,160010,165460,170910,176360,181810,187260,192710,198160,203610,209060,214510]},
+"20":{"2022":[102470,109160,115850,122540,129230,135920,142610,149300,155990,162680,169370,176060,182750,189440,196130],"2026":[123090,131130,139170,147210,155250,163290,171330,179370,187410,195450,203490,211530,219570,227610,235650]},
+"21":{"2022":[113790,121210,128630,136050,143470,150890,158310,165730,173150,180570,187990,195410,202830,210250,217670],"2026":[136680,145600,154520,163440,172360,181280,190200,199120,208040,216960,225880,234800,243720,252640,261560]},
+"22":{"2022":[122190,130900,139610,148320,157030,165740,174450,183160,191870,200580,209290,218000,226710,235420,244130],"2026":[146770,157240,167710,178180,188650,199120,209590,220060,230530,241000,251470,261940,272410,282880,293350]}};
 
-            resultsSection.style.display = 'block';
-            printBtn.style.display = 'inline-flex';
-            copyBtn.style.display = 'inline-flex';
-        }
+/* =========================================================
+   CONVEYANCE ALLOWANCE — Ministry of Finance Office Memorandum
+   No.3(1)R-5/2010-P-001, Islamabad, 21 July 2026.
+   Revision of 50% over existing rate, effective 01-07-2026.
+   ========================================================= */
+const CONVEYANCE_RULES = [
+  { min:1,  max:4,  label:"BPS 1 - 4",   existing:1785, revised:2678 },
+  { min:5,  max:10, label:"BPS 5 - 10",  existing:1932, revised:2898 },
+  { min:11, max:15, label:"BPS 11 - 15", existing:2856, revised:4284 },
+  { min:16, max:22, label:"BPS 16 and above", existing:5000, revised:7500 }
+];
 
-        function showError(message) {
-            const errorBox = document.getElementById('errorBox');
-            errorBox.textContent = message;
-            errorBox.style.display = 'block';
-            document.getElementById('resultsSection').style.display = 'none';
-            document.getElementById('printBtn').style.display = 'none';
-            document.getElementById('copyBtn').style.display = 'none';
-        }
+function getConveyanceRule(bps){
+  return CONVEYANCE_RULES.find(r => bps >= r.min && bps <= r.max);
+}
 
-        function resetCalculator() {
-            document.getElementById('salaryForm').reset();
-            document.getElementById('errorBox').style.display = 'none';
-            document.getElementById('resultsSection').style.display = 'none';
-            document.getElementById('printBtn').style.display = 'none';
-            document.getElementById('copyBtn').style.display = 'none';
-        }
+function fmt(n){
+  return "Rs. " + Math.round(n).toLocaleString("en-PK");
+}
 
-        function printResult() {
-            window.print();
-        }
+/* ---------------- Populate BPS dropdown ---------------- */
+const bpsSelect = document.getElementById('bpsSelect');
+for (let i = 1; i <= 22; i++){
+  const opt = document.createElement('option');
+  opt.value = i;
+  opt.textContent = "BPS-" + String(i).padStart(2,'0');
+  bpsSelect.appendChild(opt);
+}
 
-        function copyResult() {
-            const currentPay = document.getElementById('resCurrentPay').textContent;
-            const stage = document.getElementById('resStage').textContent;
-            const pay2022 = document.getElementById('res2022Pay').textContent;
-            const pay2026 = document.getElementById('res2026Pay').textContent;
-            const ara = document.getElementById('resARA').textContent;
-            const dra = document.getElementById('resDRA').textContent;
-            const gross = document.getElementById('resGross').textContent;
-            const increase = document.getElementById('resIncrease').textContent;
+const basicPayInput = document.getElementById('basicPayInput');
+const errorMsg = document.getElementById('errorMsg');
+const placeholderCard = document.getElementById('placeholderCard');
+const resultArea = document.getElementById('resultArea');
+const ledgerSteps = document.getElementById('ledgerSteps');
+const conveyanceBlock = document.getElementById('conveyanceBlock');
+const totalIncreaseValue = document.getElementById('totalIncreaseValue');
+const resultBpsTag = document.getElementById('resultBpsTag');
 
-            const textToCopy = `Salary Increase Calculation (2026):\n` +
-                `- Current Basic Pay: ${currentPay}\n` +
-                `- Stage: ${stage}\n` +
-                `- 2022 Basic Pay: ${pay2022}\n` +
-                `- 2026 Revised Basic Pay: ${pay2026}\n` +
-                `- 7% ARA: ${ara}\n` +
-                `- 15% DRA: ${dra}\n` +
-                `- Gross Salary: ${gross}\n` +
-                `- Total Increase: ${increase}`;
+function showError(msg){
+  errorMsg.textContent = msg;
+  errorMsg.style.display = 'block';
+  resultArea.style.display = 'none';
+  placeholderCard.style.display = 'block';
+}
+function clearError(){
+  errorMsg.style.display = 'none';
+  errorMsg.textContent = '';
+}
 
-            navigator.clipboard.writeText(textToCopy).then(() => {
-                alert("Results copied to clipboard successfully!");
-            }).catch(err => {
-                alert("Failed to copy results.");
-            });
-        }
-    </script>
+function arrowDivider(){
+  return '<div class="divider-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v14M6 13l6 6 6-6"/></svg></div>';
+}
+
+function stepRow(num, label, small, value, isBase){
+  return `<div class="step ${isBase ? 'base' : ''}">
+    <div class="num">${num}</div>
+    <div class="label">${label}${small ? `<small>${small}</small>` : ''}</div>
+    <div class="value">${value}</div>
+  </div>`;
+}
+
+function calculate(){
+  clearError();
+  const bps = parseInt(bpsSelect.value, 10);
+  const rawInput = basicPayInput.value.replace(/,/g,'').trim();
+
+  if (rawInput === '' || isNaN(Number(rawInput))){
+    showError("Please enter a valid Current Basic Pay amount.");
+    return;
+  }
+  const currentBasicPay = Number(rawInput);
+
+  const bpsKey = String(bps);
+  const record = SAL_DATA[bpsKey];
+  if (!record){
+    showError("Selected pay scale was not found in the salary database.");
+    return;
+  }
+
+  const stageIndex = record["2022"].findIndex(v => v === currentBasicPay);
+
+  if (stageIndex === -1){
+    showError("Current Basic Pay not found for selected BPS.");
+    return;
+  }
+
+  const basicPay2022 = record["2022"][stageIndex];
+  const basicPay2026 = record["2026"][stageIndex];
+
+  const basicPayIncrease = basicPay2026 - basicPay2022;
+  const ara = basicPay2026 * 0.07;
+  const draApplicable = document.querySelector('input[name="draApplicable"]:checked').value === 'yes';
+  const dra = draApplicable ? basicPay2022 * 0.15 : 0;
+
+  const rule = getConveyanceRule(bps);
+  const conveyance2026 = rule.revised;
+  const conveyanceIncrease = rule.revised - rule.existing;
+
+  const totalIncrease = basicPayIncrease + ara + dra + conveyanceIncrease;
+
+  /* ---- Render ---- */
+  resultBpsTag.textContent = "BPS-" + String(bps).padStart(2,'0');
+
+  ledgerSteps.innerHTML =
+    stepRow(1, "Current Basic Pay", "As entered", fmt(currentBasicPay), true) +
+    arrowDivider() +
+    stepRow(2, "Stage", "Auto-detected", "Stage " + stageIndex) +
+    arrowDivider() +
+    stepRow(3, "2022 Basic Pay", "Confirmed from record", fmt(basicPay2022)) +
+    arrowDivider() +
+    stepRow(4, "2026 Revised Basic Pay", "From official 2026 scale", fmt(basicPay2026));
+
+  const draRow = draApplicable
+    ? `<div class="row"><div class="k">15% Disparity Reduction Allowance <small>2022 Basic Pay &times; 15%</small></div><div class="v">${fmt(dra)}</div></div>`
+    : `<div class="row"><div class="k">15% Disparity Reduction Allowance <small>Not admissible in this Ministry / Division</small></div><div class="v">Not Applicable</div></div>`;
+
+  conveyanceBlock.innerHTML = `
+    <div class="row"><div class="k">Increase in Basic Pay <small>2026 Revised Basic Pay &minus; 2022 Basic Pay</small></div><div class="v">${fmt(basicPayIncrease)}</div></div>
+    <div class="row"><div class="k">7% Adhoc Relief Allowance <small>2026 Revised Basic Pay &times; 7%</small></div><div class="v">${fmt(ara)}</div></div>
+    ${draRow}
+    <div class="row"><div class="k">2026 Conveyance Allowance <small>${rule.label} &middot; OM No.3(1)R-5/2010-P-001</small></div><div class="v">${fmt(conveyance2026)}</div></div>
+    <div class="row"><div class="k">Increase in Conveyance Allowance <small>Revised Rs. ${rule.revised.toLocaleString('en-PK')} &minus; Existing Rs. ${rule.existing.toLocaleString('en-PK')}</small></div><div class="v">${fmt(conveyanceIncrease)}</div></div>
+  `;
+
+  totalIncreaseValue.textContent = fmt(totalIncrease);
+  document.querySelector('.t-sub').textContent = draApplicable
+    ? "Sum of Basic Pay Increase + 7% ARA + 15% DRA + Increase in Conveyance Allowance"
+    : "Sum of Basic Pay Increase + 7% ARA + Increase in Conveyance Allowance (DRA not applicable)";
+
+  placeholderCard.style.display = 'none';
+  resultArea.style.display = 'block';
+}
+
+document.getElementById('calcBtn').addEventListener('click', calculate);
+
+basicPayInput.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') calculate();
+});
+
+document.getElementById('resetBtn').addEventListener('click', () => {
+  bpsSelect.selectedIndex = 0;
+  basicPayInput.value = '';
+  document.querySelector('input[name="draApplicable"][value="yes"]').checked = true;
+  clearError();
+  resultArea.style.display = 'none';
+  placeholderCard.style.display = 'block';
+});
+
+document.getElementById('copyBtn').addEventListener('click', () => {
+  const text = resultArea.innerText;
+  const btn = document.getElementById('copyBtn');
+  const original = btn.textContent;
+  if (navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(() => {
+      btn.textContent = 'Copied!';
+      setTimeout(() => btn.textContent = original, 1500);
+    }).catch(() => {
+      fallbackCopy(text, btn, original);
+    });
+  } else {
+    fallbackCopy(text, btn, original);
+  }
+});
+
+function fallbackCopy(text, btn, original){
+  const ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.position = 'fixed';
+  ta.style.opacity = '0';
+  document.body.appendChild(ta);
+  ta.focus(); ta.select();
+  try { document.execCommand('copy'); btn.textContent = 'Copied!'; }
+  catch(e){ btn.textContent = 'Copy failed'; }
+  document.body.removeChild(ta);
+  setTimeout(() => btn.textContent = original, 1500);
+}
+
+document.getElementById('printBtn').addEventListener('click', () => {
+  window.print();
+});
+</script>
+
 </body>
 </html>
