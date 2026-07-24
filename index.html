@@ -546,7 +546,7 @@ function calculate(){
   const conveyance2026 = rule.revised;
   const conveyanceIncrease = rule.revised - rule.existing;
 
-  const totalIncrease = basicPayIncrease + ara + dra + conveyanceIncrease;
+  const totalIncrease = ara + dra + conveyanceIncrease;
 
   /* ---- Render ---- */
   resultBpsTag.textContent = "BPS-" + String(bps).padStart(2,'0');
@@ -574,8 +574,8 @@ function calculate(){
 
   totalIncreaseValue.textContent = fmt(totalIncrease);
   document.querySelector('.t-sub').textContent = draApplicable
-    ? "Sum of Basic Pay Increase + 7% ARA + 15% DRA + Increase in Conveyance Allowance"
-    : "Sum of Basic Pay Increase + 7% ARA + Increase in Conveyance Allowance (DRA not applicable)";
+    ? "7% ARA + 15% DRA + Increase in Conveyance Allowance"
+    : "7% ARA + Increase in Conveyance Allowance (DRA not applicable)";
 
   placeholderCard.style.display = 'none';
   resultArea.style.display = 'block';
