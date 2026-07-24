@@ -532,7 +532,7 @@ function calculate(){
   const basicPayIncrease = basicPay2026 - basicPay2022;
   const ara = basicPay2026 * 0.07;
   const draApplicable = document.querySelector('input[name="draApplicable"]:checked').value === 'yes';
-  const dra = draApplicable ? basicPay2022 * 0.15 : 0;
+  const dra = draApplicable ? currentBasicPay * 0.15 : 0;
 
   const rule = getConveyanceRule(bps);
   const conveyance2026 = rule.revised;
@@ -553,7 +553,7 @@ function calculate(){
     stepRow(4, "2026 Revised Basic Pay", "From official 2026 scale", fmt(basicPay2026));
 
   const draRow = draApplicable
-    ? `<div class="row"><div class="k">15% Disparity Reduction Allowance <small>2022 Basic Pay &times; 15%</small></div><div class="v">${fmt(dra)}</div></div>`
+    ? `<div class="row"><div class="k">15% Disparity Reduction Allowance <small>Current Basic Pay &times; 15%</small></div><div class="v">${fmt(dra)}</div></div>`
     : `<div class="row"><div class="k">15% Disparity Reduction Allowance <small>Not admissible in this Ministry / Division</small></div><div class="v">Not Applicable</div></div>`;
 
   conveyanceBlock.innerHTML = `
